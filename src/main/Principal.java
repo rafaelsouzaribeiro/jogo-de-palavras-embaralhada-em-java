@@ -31,7 +31,9 @@ public class Principal {
             	  mecanica.pontuar();
                   mecanica.zeraTentativasPorPalavras();
                   mecanica.incrementarNumeroDePalavras();
-                  palavra = novaPalavra(banco, fabrica,mecanica);  
+                  palavra = novaPalavra(banco, fabrica,mecanica); 
+                  System.out.printf("Número total de palavras: %d de %d%n", mecanica.getNumeroDePalavra(), mecanica.getNumeroTotalDePalavras());
+                  System.out.printf("Número de tentativa por palavra %d de %d%n", mecanica.getTentativas(), mecanica.getTentativaEsperada());
               }else{
             	  System.out.println("Você Errou!");
             	  System.out.printf("Número de tentativa por palavra %d de %d%n", mecanica.getTentativas(), mecanica.getTentativaEsperada());
@@ -59,8 +61,9 @@ public class Principal {
         System.out.println("Nível: " + embaralhador.getNivel());
         System.out.println("Embaralhador usado: " + embaralhador.getClass().getSimpleName());
         System.out.println("Palavra embaralhada: " + embaralhador.embaralhar(palavra));
-        System.out.printf("Número total de palavras: %d de %d%n", mecanica.getNumeroDePalavra(), mecanica.getNumeroTotalDePalavras());
-        System.out.printf("Número de tentativa por palavra %d de %d%n", mecanica.getTentativas(), mecanica.getTentativaEsperada());
+        System.out.printf("Número total de palavras: %d%n", mecanica.getNumeroTotalDePalavras());
+        System.out.printf("Número de tentativa por palavra: %d%n", mecanica.getTentativaEsperada());
+       
         return palavra;
     }
 }
