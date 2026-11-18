@@ -1,4 +1,4 @@
-# 🔤 Jogo das Palavras Embaralhadas (Tarefa final do curso)
+# 🔤 Jogo das Palavras Embaralhadas
 
 Jogo em **Java**, jogado no terminal. O programa sorteia uma palavra de um arquivo de texto, embaralha as letras e o jogador tenta descobrir qual é a palavra original.
 
@@ -16,6 +16,7 @@ A cada rodada, a forma de embaralhar (e o nível de dificuldade) é sorteada. As
 - [Padrões de projeto utilizados](#-padrões-de-projeto-utilizados)
 - [Como executar](#-como-executar)
 - [Testes unitários](#-testes-unitários)
+- [Problemas comuns](#-problemas-comuns)
 
 ---
 
@@ -100,8 +101,11 @@ JogoDasPalavrasEmbaralhadas/
 │       ├── EmbaralhadorAleatorioTest.java
 │       └── FabricaEmbaralhadoresTest.java
 │
+├── palavras.txt                           # banco de palavras (uma por linha)
 └── README.md
 ```
+
+> ℹ️ O projeto **não** usa `module-info.java`. Se o Eclipse tiver criado esse arquivo, apague-o (veja [Problemas comuns](#-problemas-comuns)).
 
 ### Responsabilidade de cada classe
 
@@ -189,13 +193,15 @@ Princípios **SOLID** aplicados:
 - Java **11** ou superior (`java -version`)
 
 ### Arquivo de palavras
-Crie o arquivo `palavras.txt` com **uma palavra por linha**. Por padrão, o jogo procura em:
+Crie o arquivo `palavras.txt` na **raiz do projeto** (mesmo nível de `src/`), com **uma palavra por linha**.
 
-| Sistema | Caminho |
-|---|---|
-| macOS | `/Users/<seu-usuario>/Downloads/palavras.txt` |
-| Linux | `/home/<seu-usuario>/Downloads/palavras.txt` |
-| Windows | `C:\Users\<seu-usuario>\Downloads\palavras.txt` |
+O jogo procura o arquivo na pasta de onde é executado:
+
+```java
+String arquivoPadrao = Paths.get(System.getProperty("user.dir"), "palavras.txt").toString();
+```
+
+No Eclipse, essa pasta já é a raiz do projeto.
 
 Exemplo de conteúdo:
 
@@ -210,15 +216,14 @@ elefante
 ### Pelo terminal
 
 ```bash
-# compilar (a partir da pasta src)
-cd src
-javac main/*.java interfaces/*.java
+# a partir da RAIZ do projeto (onde está o palavras.txt)
+javac -d bin src/main/*.java src/interfaces/*.java
 
-# executar usando o arquivo padrão (~/Downloads/palavras.txt)
-java main.Principal
+# executar usando ./palavras.txt
+java -cp bin main.Principal
 
 # ou informar outro arquivo
-java main.Principal /caminho/para/minhas-palavras.txt
+java -cp bin main.Principal /caminho/para/minhas-palavras.txt
 ```
 
 ### Pelo Eclipse
@@ -254,6 +259,28 @@ class MeuEmbaralhadorTest extends EmbaralhadorContratoTest {
     }
 }
 ```
+
+---
+
+## 🛠️ Problemas comuns
+
+### Erro nos testes por causa do `module-info.java`
+
+Ao criar o projeto, o Eclipse pode gerar o arquivo **`src/module-info.java`** (sistema de módulos do Java 9+). Com ele, toda biblioteca precisa ser declarada como `requires`, e os testes com JUnit passam a dar erro de compilação.
+
+**Solução:** apague o arquivo.
+
+1. No **Package Explorer**, abra `src/`.
+2. Clique com o botão direito em `module-info.java` → **Delete**.
+3. **Project → Clean…** para recompilar.
+
+> Para não acontecer em projetos novos: em **File → New → Java Project**, desmarque **"Create module-info.java file"**.
+
+### `Erro ao ler o arquivo: palavras.txt`
+
+O arquivo não está na pasta de execução.
+- Confira se `palavras.txt` está na **raiz do projeto**, e não dentro de `src/`.
+- No Eclipse: **Run → Run Configurations → Arguments → Working directory** deve estar em **Default**.
 
 ---
 
