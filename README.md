@@ -281,4 +281,10 @@ O arquivo não está na pasta de execução.
 - Confira se `palavras.txt` está na **raiz do projeto**, e não dentro de `src/`.
 - No Eclipse: **Run → Run Configurations → Arguments → Working directory** deve estar em **Default**.
 
----
+
+## UML
+
+Diagrama de classes do projeto, com as interfaces, as classes, as fábricas e as relações entre elas.
+
+![Diagrama UML do Jogo das Palavras Embaralhadas](uml.png)
+
