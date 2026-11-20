@@ -282,10 +282,3 @@ O arquivo não está na pasta de execução.
 - No Eclipse: **Run → Run Configurations → Arguments → Working directory** deve estar em **Default**.
 
 ---
-
-## 🚀 Ideias de melhorias
-
-- Pontuação por nível (`FACIL` = 5, `MEDIO` = 10, `DIFICIL` = 20).
-- Evitar repetir palavras na mesma partida.
-- Mecânica de "morte súbita" (1 tentativa por palavra, termina após 3 erros).
-- Ranking com os melhores resultados salvos em arquivo.
