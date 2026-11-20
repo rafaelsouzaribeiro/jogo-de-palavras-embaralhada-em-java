@@ -3,6 +3,11 @@ package main;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
+
+import classes.BancoDePalavras;
+import classes.MecanicaDoJogo;
+import factory.FabricaEmbaralhadores;
+import factory.FabricaMecanicaDoJogo;
 import interfaces.*;
 
 public class Principal {
@@ -27,17 +32,22 @@ public class Principal {
             
 
               if (resposta.trim().equalsIgnoreCase(palavra)) {
-            	  System.out.println("Você Acertou!");
-            	  mecanica.pontuar();
-                  mecanica.zeraTentativasPorPalavras();
-                  mecanica.incrementarNumeroDePalavras();
-                  palavra = novaPalavra(banco, fabrica,mecanica); 
-                  System.out.printf("Número total de palavras: %d de %d%n", mecanica.getNumeroDePalavra(), mecanica.getNumeroTotalDePalavras());
-                  System.out.printf("Número de tentativa por palavra %d de %d%n", mecanica.getTentativas(), mecanica.getTentativaEsperada());
+            	    System.out.println("Você Acertou!");
+            	    mecanica.pontuar();
+            	    mecanica.zeraTentativasPorPalavras();
+            	    mecanica.incrementarNumeroDePalavras();
+
+            	    if (mecanica.fimDoJogo()) {
+            	        palavra = novaPalavra(banco, fabrica, mecanica);
+            	        System.out.printf("Número total de palavras: %d de %d%n",
+            	                mecanica.getNumeroDePalavra(), mecanica.getNumeroTotalDePalavras());
+            	        System.out.printf("Número de tentativa por palavra %d de %d%n",
+            	                mecanica.getTentativas() + 1, mecanica.getTentativaEsperada());
+            	    }
               }else{
+            	  mecanica.incrementarTentativas();
             	  System.out.println("Você Errou!");
-            	  System.out.printf("Número de tentativa por palavra %d de %d%n", mecanica.getTentativas(), mecanica.getTentativaEsperada());
-                  mecanica.incrementarTentativas();
+            	  System.out.printf("Número de tentativa por palavra %d de %d%n", mecanica.getTentativas(), mecanica.getTentativaEsperada()); 
               }
           }
 

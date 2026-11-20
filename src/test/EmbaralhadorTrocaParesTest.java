@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import main.Embaralhador;
-import interfaces.EmbaralhadorTrocaPares;
+import classes.EmbaralhadorTrocaPares;
+import interfaces.Embaralhador;
 
 class EmbaralhadorTrocaParesTest extends EmbaralhadorContratoTest {
 

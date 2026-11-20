@@ -1,4 +1,4 @@
-package interfaces;
+package classes;
 
 public  abstract class MecanicaDoJogo {
 	protected int pontos = 0;

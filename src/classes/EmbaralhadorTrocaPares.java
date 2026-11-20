@@ -1,6 +1,6 @@
-package interfaces;
+package classes;
 
-import main.Embaralhador;
+import interfaces.Embaralhador;
 
 public class EmbaralhadorTrocaPares implements Embaralhador {
 

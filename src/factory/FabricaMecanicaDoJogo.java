@@ -1,6 +1,10 @@
-package interfaces;
+package factory;
 
 import java.util.Random;
+
+import classes.MecanicaDoJogo;
+import classes.MecanicaDoJogo3;
+import classes.MecanicaDoJogo5;
 
 public class FabricaMecanicaDoJogo {
 	private final Random random = new Random();

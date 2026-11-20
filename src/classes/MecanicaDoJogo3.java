@@ -1,4 +1,4 @@
-package interfaces;
+package classes;
 
 public class MecanicaDoJogo3 extends MecanicaDoJogo{
 	
@@ -48,8 +48,7 @@ public class MecanicaDoJogo3 extends MecanicaDoJogo{
 	
 	@Override
 	public int getNumeroDePalavra() {
-		if(numerosPalavras>=numeroFixoDePalavras)return numeroFixoDePalavras;
-		return numerosPalavras+1;
+		return numerosPalavras;
 	}
 	
 	@Override
@@ -58,8 +57,7 @@ public class MecanicaDoJogo3 extends MecanicaDoJogo{
 	}
 
 	public int getTentativas() {
-		if(numerosTentativas>=tentativas)return tentativas;
-		return numerosTentativas+1;
+		return numerosTentativas;
 	}
 	
 	@Override

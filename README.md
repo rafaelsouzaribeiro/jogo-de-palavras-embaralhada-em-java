@@ -39,34 +39,41 @@ Palavras carregadas: 20
 
 Nível: MEDIO
 Embaralhador usado: EmbaralhadorTrocaPares
-Palavra embaralhada: idonssuaor
-Número total de palavras: 1 de 5
-Número de tentativa por palavra 1 de 5
-Qual é a palavra?: dinossauro
+Palavra embaralhada: ufetobl
+Número total de palavras: 3
+Número de tentativa por palavra: 3
+Qual é a palavra?: futebol
+Você Acertou!
+
+Nível: MEDIO
+Embaralhador usado: EmbaralhadorTrocaPares
+Palavra embaralhada: ilomanad
+Número total de palavras: 3
+Número de tentativa por palavra: 3
+Número total de palavras: 1 de 3
+Número de tentativa por palavra 1 de 3
+Qual é a palavra?: limonada
 Você Acertou!
 
 Nível: DIFICIL
 Embaralhador usado: EmbaralhadorAleatorio
-Palavra embaralhada: tveseor
-Número total de palavras: 2 de 5
-Número de tentativa por palavra 1 de 5
-Qual é a palavra?: a
+Palavra embaralhada: opmipthooa
+Número total de palavras: 3
+Número de tentativa por palavra: 3
+Número total de palavras: 2 de 3
+Número de tentativa por palavra 1 de 3
+Qual é a palavra?: k
 Você Errou!
-Número de tentativa por palavra 2 de 5
-Qual é a palavra?: a
+Número de tentativa por palavra 1 de 3
+Qual é a palavra?: k
 Você Errou!
-Número de tentativa por palavra 3 de 5
-Qual é a palavra?: a
+Número de tentativa por palavra 2 de 3
+Qual é a palavra?: hiopotamo
 Você Errou!
-Número de tentativa por palavra 4 de 5
-Qual é a palavra?: a
-Você Errou!
-Número de tentativa por palavra 5 de 5
-Qual é a palavra?: a
-Você Errou!
-Número de tentativa por palavra 6 de 5
+Número de tentativa por palavra 3 de 3
 ----------FIM DO JOGO---------
-Pontos: 10
+Pontos: 20
+
 ```
 
 Nesta partida, o jogador acertou `dinossauro` (+10 pontos) e depois esgotou as 5 tentativas na palavra `sorvete`, encerrando o jogo.
@@ -79,27 +86,30 @@ Nesta partida, o jogador acertou `dinossauro` (+10 pontos) e depois esgotou as 5
 JogoDasPalavrasEmbaralhadas/
 ├── src/
 │   ├── main/
-│   │   ├── Principal.java                 # ponto de entrada (main)
+│   │   └── Principal.java                 # ponto de entrada (main)
+│   │
+│   ├── classes/
 │   │   ├── BancoDePalavras.java           # lê o arquivo e sorteia palavras
-│   │   └── Embaralhador.java              # interface + enum NIVEL
+│   │   ├── EmbaralhadorInvertido.java     # nível FACIL
+│   │   ├── EmbaralhadorTrocaPares.java    # nível MEDIO
+│   │   ├── EmbaralhadorAleatorio.java     # nível DIFICIL
+│   │   ├── MecanicaDoJogo.java            # classe abstrata com as regras base
+│   │   ├── MecanicaDoJogo3.java           # partida com 3 palavras
+│   │   └── MecanicaDoJogo5.java           # partida com 5 palavras
+│   │
+│   ├── factory/
+│   │   ├── FabricaEmbaralhadores.java     # sorteia um embaralhador
+│   │   └── FabricaMecanicaDoJogo.java     # sorteia a mecânica
 │   │
 │   └── interfaces/
-│       ├── EmbaralhadorInvertido.java     # nível FACIL
-│       ├── EmbaralhadorTrocaPares.java    # nível MEDIO
-│       ├── EmbaralhadorAleatorio.java     # nível DIFICIL
-│       ├── FabricaEmbaralhadores.java     # sorteia um embaralhador
-│       ├── MecanicaDoJogo.java            # classe abstrata com as regras base
-│       ├── MecanicaDoJogo3.java           # partida com 3 palavras
-│       ├── MecanicaDoJogo5.java           # partida com 5 palavras
-│       └── FabricaMecanicaDoJogo.java     # sorteia a mecânica
+│       └── Embaralhador.java              # interface + enum NIVEL
 │
 ├── test/
-│   └── interfaces/
-│       ├── EmbaralhadorContratoTest.java  # testes comuns a todo Embaralhador
-│       ├── EmbaralhadorInvertidoTest.java
-│       ├── EmbaralhadorTrocaParesTest.java
-│       ├── EmbaralhadorAleatorioTest.java
-│       └── FabricaEmbaralhadoresTest.java
+│   ├── EmbaralhadorContratoTest.java      # testes comuns a todo Embaralhador
+│   ├── EmbaralhadorInvertidoTest.java
+│   ├── EmbaralhadorTrocaParesTest.java
+│   ├── EmbaralhadorAleatorioTest.java
+│   └── FabricaEmbaralhadoresTest.java
 │
 ├── palavras.txt                           # banco de palavras (uma por linha)
 └── README.md
@@ -213,18 +223,7 @@ dinossauro
 elefante
 ```
 
-### Pelo terminal
 
-```bash
-# a partir da RAIZ do projeto (onde está o palavras.txt)
-javac -d bin src/main/*.java src/interfaces/*.java
-
-# executar usando ./palavras.txt
-java -cp bin main.Principal
-
-# ou informar outro arquivo
-java -cp bin main.Principal /caminho/para/minhas-palavras.txt
-```
 
 ### Pelo Eclipse
 1. **File → Import → Existing Projects into Workspace** e selecione a pasta do projeto.
@@ -235,7 +234,7 @@ java -cp bin main.Principal /caminho/para/minhas-palavras.txt
 
 ## ✅ Testes unitários
 
-Os testes usam **JUnit 5** e ficam na pasta `test/interfaces`.
+Os testes usam **JUnit 5** e ficam na pasta `test/`.
 
 | Classe de teste | O que verifica |
 |---|---|

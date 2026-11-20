@@ -1,7 +1,11 @@
-package interfaces;
+package factory;
 
 import java.util.Random;
-import main.Embaralhador;
+
+import classes.EmbaralhadorAleatorio;
+import classes.EmbaralhadorInvertido;
+import classes.EmbaralhadorTrocaPares;
+import interfaces.Embaralhador;
 
 
 public class FabricaEmbaralhadores {

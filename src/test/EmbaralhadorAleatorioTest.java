@@ -9,8 +9,8 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import main.Embaralhador;
-import interfaces.EmbaralhadorAleatorio;
+import classes.EmbaralhadorAleatorio;
+import interfaces.Embaralhador;
 
 class EmbaralhadorAleatorioTest extends EmbaralhadorContratoTest {
 

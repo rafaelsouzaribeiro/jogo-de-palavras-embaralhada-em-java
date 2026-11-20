@@ -1,10 +1,10 @@
-package interfaces;
+package classes;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import main.Embaralhador;
+import interfaces.Embaralhador;
 
 
 public class EmbaralhadorAleatorio implements Embaralhador {
